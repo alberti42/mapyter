@@ -210,10 +210,11 @@ class MatlabKernel2(Kernel):
         
         self._aux = {}  # reset auxiliary blocks
         self.reset_cell_vars()
-        
-        import getpass
-        self._engine_name = "jupyter_{:s}".format(getpass.getuser())
-        
+
+        # import getpass
+        # self._engine_name = "jupyter_{:s}".format(getpass.getuser())
+        self._engine_name = "mapyter"
+
         self.CONNECTION_ERROR = """
 Make sure MATLAB is both running and shared. To share a MATLAB session, type the instruction in a MATLAB:
 >> matlab.engine.shareEngine('{engine_name:s}');""".format(engine_name=self._engine_name)

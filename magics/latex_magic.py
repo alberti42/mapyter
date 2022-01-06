@@ -14,7 +14,7 @@ Display the content of the line as compiled LaTeX.
 
 Example:
 
-  %latex $x_1 = \dfrac{a}{b}$
+  %latex $x_1 = \\dfrac{a}{b}$
 """
         latex = Latex(line)
         self.kernel.Display(latex)

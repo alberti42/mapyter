@@ -1,8 +1,11 @@
-function shareWithJupyter()
+function shareWithJupyter(name)
     
     actualEngineName = matlab.engine.engineName;
-    username = char(java.lang.System.getProperty('user.name'));
-    engineName = ['jupyter_',username];
+    if nargin == 1
+        engineName = name;
+    else
+        engineName = 'mapyter';
+    end
     
     if isempty(actualEngineName)
         matlab.engine.shareEngine(engineName);
