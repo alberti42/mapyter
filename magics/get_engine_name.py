@@ -3,7 +3,7 @@
 
 from IPython.display import FileLinks
 from mapyter._MagicPosix import MagicPosix, option, magic_usage
-import os
+from mapyter._Notifications import SimpleNotification
 
 class GetEngineName(MagicPosix):
 
@@ -17,7 +17,7 @@ Examples:
 
   %get_engine_name
 """
-        self.kernel.Display(self.kernel._engine_name)
+        SimpleNotification(display=self.kernel.Display).showMessageFor('The shared MATLAB engine is currently set to: {:s}'.format(self.kernel._engine_name),3)
 
 def register_magics(kernel):
    kernel.register_magics(GetEngineName)
