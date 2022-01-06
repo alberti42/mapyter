@@ -1,0 +1,40 @@
+# Copyright (c) Andrea Alberti, 2020
+
+from mapyter._MagicPosix import MagicPosix
+
+from tempfile import TemporaryDirectory
+from os import path
+from json import dumps,loads
+from IPython.display import Javascript
+
+class SmartIndentMagic(MagicPosix):
+
+    def cell_smart_indent(self,line,code,**kwargs):
+        if theLine == "json":
+            code_prettify = True
+            theCode = loads(code)
+        else:
+            code_prettify = False
+            theCode = code
+            
+        with TemporaryDirectory() as tmpdir:
+            tmpcode_path = path.join(tmpdir,'Gc8i96uVM_tmpcode.m')
+            with open(tmpcode_path,'w') as tmpcode_m:
+                tmpcode_m.write(theCode)
+            self.kernel._matlab.eval('h = matlab.desktop.editor.openDocument(\'{0!s}\');h.smartIndentContents;h.save;h.close;'.format(tmpcode_path),nargout=0)
+            with open(tmpcode_path,'r') as tmpcode_m:
+                tmpcode = tmpcode_m.read()
+
+        if code_prettify:
+            print(dumps(tmpcode))
+            self.evaluate = False
+        else:
+            tmpcode = dumps(tmpcode)
+            js = """var cell_element = this.element.parents('.cell');
+            var cell_idx = Jupyter.notebook.get_cell_elements().index(cell_element);
+            var cell = Jupyter.notebook.get_cell(cell_idx);cell.set_text('%%smart_indent\\n'+"""+tmpcode+""");"""
+            self.kernel.Display(Javascript(js))
+            self.evaluate = True
+    
+def register_magics(kernel):
+    kernel.register_magics(SmartIndentMagic)
