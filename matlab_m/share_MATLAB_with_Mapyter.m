@@ -4,7 +4,8 @@ function shareWithJupyter(name)
     if nargin == 1
         engineName = name;
     else
-        engineName = 'mapyter';
+        username = char(java.lang.System.getProperty('user.name'));
+        engineName = ['mapyter_',username];
     end
     
     if isempty(actualEngineName)
