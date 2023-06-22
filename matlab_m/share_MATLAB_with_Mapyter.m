@@ -1,4 +1,4 @@
-function shareWithJupyter(name)
+function share_MATLAB_with_Mapyter(name)
     
     actualEngineName = matlab.engine.engineName;
     if nargin == 1
