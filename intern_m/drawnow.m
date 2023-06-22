@@ -2,7 +2,7 @@ function drawnow(varargin)
 global Gc8i96uVM
 if Gc8i96uVM.builtin || ~isempty(varargin) || strcmp(Gc8i96uVM.backend,'native')
     builtin('drawnow',varargin{:});
-else 
+else
     Gc8i96uVM.builtin=true;
     if ~isempty(varargin), builtin('drawnow',varargin{:}); end
     
@@ -47,7 +47,7 @@ else
                 nbytes_pipe = numel(frame);
                 fastimwrite(Gc8i96uVM.pipe,hash,permute(frame,[3,2,1]));
             case 'print'
-                print(c_h,filename,sprintf('-d%s',fmt),sprintf('-r%d',round(resolution*antialias)));
+                print(c_h,filename,sprintf('-d%s',fmt),sprintf('-r%d',round(resolution*antialias)),'-noui');
             case 'exportgraphics'
                 % where does the factor 4/3 come from?
                 exportgraphics(c_h,filename,'Resolution',round(antialias*resolution/4*3),'BackgroundColor','w');
@@ -57,7 +57,7 @@ else
                     export_fig(filename,sprintf('-d%s',fmt),'-painters','-nocrop','-native',sprintf('-a%1.0f',antialias),export_fig_opts{:},c_h);
                 else
                     warning('export_fig could not be found in MATLAB path. Using ''print'' exporter instead.')
-                    print(c_h,filename,sprintf('-d%s',fmt),sprintf('-r%d',round(resolution*antialias)));
+                    print(c_h,filename,sprintf('-d%s',fmt),sprintf('-r%d',round(resolution*antialias)),'-noui');
                 end
         end
         fprintf(['[Gc8i96uVM, import]: ',jsonencode(struct('file',img_name,'hash',hash,'num',c,'pipe_bytes',nbytes_pipe)),'\n']);
