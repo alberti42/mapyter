@@ -1,0 +1,3 @@
+recursive-include src/mapyter/intern_cpp/ *.cpp
+recursive-include src/mapyter/intern_m/ *.m
+recursive-include src/mapyter/matlab_m/ *.m
