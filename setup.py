@@ -1,7 +1,8 @@
 from distutils.core import setup
 setup(
   name = 'Mapyter',
-  packages = ['src':'mapyter'],
+  packages = ['mapyter'],
+  package_dir = {'mapyter':'src'},
   version = '1.0',
   description = 'Mapyter - The MATLAB interface for Jupyter',
   author = 'Andrea Alberti',
