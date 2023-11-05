@@ -110,8 +110,10 @@ def _formatter(data, repr_func):
             try:
                 value = value.decode('utf_8')
             except Exception:
+                # TODO: check the lines below. They were both enabled at the same time
+                # which clearly makes no sense.
                 value = base64.encodestring(value)
-                value = value.decode('utf_8')
+                # value = value.decode('utf_8')
         try:
             format_dict[mimetype] = str(value)
         except:
