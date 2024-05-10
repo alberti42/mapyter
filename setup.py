@@ -9,6 +9,7 @@ setup(
   author_email = 'a.alberti82@gmail.com',
   url='https://github.com/alberti42/mapyter',
   install_requires=[
+        "ipykernel",
         "tqdm",
         "pillow",
         "jupyter-packaging"

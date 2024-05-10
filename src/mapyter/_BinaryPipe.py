@@ -99,13 +99,14 @@ class BinaryPipe(_PipesHandler):
                         raise UnknownTypeError(self.args['type'])
                 elif cmd == 'tqdm':
                     theId = self.args['id']
-                
+
                     if theId in self._kernel._pbars:
                         self._kernel.Display(self._kernel._pbars[theId].get_html(n=self.args['value']),display_id=theId,update=True)
                     else:
                         pbar=tqdm_notebook(total=self.args['total'], desc=self.args['msg'],clean_after=self.args['clean'])
                         self._kernel._pbars[theId] = pbar
                         self._kernel.Display(pbar.get_html(),display_id=theId)
+
                 else:
                     raise UnknownCommandError(cmd)
                     

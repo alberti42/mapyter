@@ -12,7 +12,10 @@ classdef parforNotifications < handle
     properties (GetAccess = public, SetAccess = private)
         n;
         N;   % number of iterations
-        text = 'Please wait ...';   % text to show
+    end
+
+    properties (GetAccess = public, SetAccess = public)
+    	text = 'Please wait ...';   % text to show
     end
     
     properties (Access = private)
