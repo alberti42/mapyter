@@ -45,7 +45,6 @@ import atexit
 import shutil
 import glob
 import importlib
-import base64
 import logging
 from logging import config
 
@@ -110,8 +109,11 @@ def _formatter(data, repr_func):
             try:
                 value = value.decode('utf_8')
             except Exception:
-                value = base64.encodestring(value)
-                value = value.decode('utf_8')
+                # TODO: check the lines below. They were both enabled at the same time
+                # which clearly makes no sense. See also note: https://bugs.python.org/issue39351
+                # value = base64.encodestring(value)
+                # value = value.decode('utf_8')
+                pass
         try:
             format_dict[mimetype] = str(value)
         except:
@@ -300,7 +302,7 @@ Make sure MATLAB is both running and shared. To share a MATLAB session, type the
             },
         }
 
-        logging.config.dictConfig(LOGGING_CONFIG)
+        config.dictConfig(LOGGING_CONFIG)
 
         self.log = logging.getLogger()
 
