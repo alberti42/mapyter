@@ -1,0 +1,6 @@
+{
+    "argv": ["python", "-O", "-m", "mapyter", "-f", "{connection_file}"],
+    "display_name": "Mapyter (MATLAB)",
+    "language": "matlab",
+    "mimetype": "text/x-matlab"
+}
