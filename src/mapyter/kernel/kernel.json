@@ -1,13 +1,6 @@
 {
-    "argv": [
-        "python3",
-	"-O",
-        "-m",
-        "mapyter",
-        "-f",
-        "{connection_file}"
-    ],
-    "display_name": "MATLAB Mapyter",
+    "argv": ["python", "-O", "-m", "mapyter", "-f", "{connection_file}"],
+    "display_name": "Mapyter (MATLAB)",
     "language": "matlab",
     "interrupt_mode": "message",
     "env": {},

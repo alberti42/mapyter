@@ -343,7 +343,7 @@ Make sure MATLAB is both running and shared. To share a MATLAB session, type the
         """Get the kernel json for the kernel.
         """
         here = os.path.dirname(__file__)
-        with open(os.path.join(here, 'kernel.json')) as fid:
+        with open(os.path.join(here, 'kernel/kernel.json')) as fid:
             data = json.load(fid)
         data['argv'][0] = sys.executable
         self.kernel_json = data

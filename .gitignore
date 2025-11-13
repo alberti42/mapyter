@@ -4,4 +4,4 @@ dist
 __pycache__
 *.pyc
 *.lock
-matlab_m/fastimwrite*
+src/mapyter/matlab_m/fastimwrite*
