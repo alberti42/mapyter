@@ -50,11 +50,8 @@ from logging import config
 
 from jupyter_core.paths import jupyter_config_dir
 
-from IPython.utils.PyColorize import NeutralColors
-
-# FORE_RED = '\x1b[38;2;216;85;83m'
-FORE_RED = NeutralColors.colors["header"]
-FORE_NORMAL = NeutralColors.colors["normal"]
+FORE_RED = '\x1b[38;2;216;85;83m'
+FORE_NORMAL = '\x1b[0m'
 FORE_CYAN = '\x1b[36m'
 FORE_GREEN = '\x1b[32m'
 ORANGE = '\x1b[38;2;255;100;0m'
